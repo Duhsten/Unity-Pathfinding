@@ -1,8 +1,8 @@
 ﻿using Pathfinding.Components;
-using Pathfinding.Data;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Pathfinding.Authoring
 {
@@ -10,19 +10,24 @@ namespace Pathfinding.Authoring
     {
         public float minDistance;
 
+        public int agentId;
+
         public class PathfinderAuthoringBaker : Baker<PathfinderAuthoring>
         {
             public override void Bake(PathfinderAuthoring authoring)
             {
                 var entity = GetEntity(TransformUsageFlags.Dynamic);
+
+                Debug.Log(NavMesh.GetSettingsNameFromID(authoring.agentId));
+                ;
                 AddComponent(entity, new Pathfinder
                 {
                     from = default,
                     to = default,
                     requiredMinDistanceSq = math.pow(authoring.minDistance, 2),
-                    agentId = 0,
+                    agentId = NavMesh.GetSettingsByIndex(authoring.agentId).agentTypeID,
                     pathId = 0,
-                    pathStatus = PathStatus.None
+                    pathStatus = 0
                 });
                 SetComponentEnabled<Pathfinder>(entity, false);
                 AddBuffer<PathBuffer>(entity);
