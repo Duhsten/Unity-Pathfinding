@@ -95,7 +95,7 @@ namespace Pathfinding.Systems
 
                     //Debug.Log($"Firing off request with id {pathId} from {sourcePos} to {targetPos}");
                     findPath.pathId = pathId;
-                    findPath.pathStatus = PathStatus.InProgress;
+                    findPath.pathStatus = PathQueryStatus.InProgress;
                     // findPath.pathWalkerIndex = 0;
 
                     pathRequest->pathRequestId = pathId;

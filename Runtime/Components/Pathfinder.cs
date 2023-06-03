@@ -1,7 +1,6 @@
-﻿using Pathfinding.Data;
-using Pathfinding.Systems;
-using Unity.Entities;
+﻿using Unity.Entities;
 using Unity.Mathematics;
+using UnityEngine.Experimental.AI;
 
 namespace Pathfinding.Components
 {
@@ -16,7 +15,6 @@ namespace Pathfinding.Components
 
         public int pathId;
 
-        public PathStatus pathStatus;
-        // public int pathWalkerIndex;
+        public PathQueryStatus pathStatus;
     }
 }

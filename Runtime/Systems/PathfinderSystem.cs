@@ -197,9 +197,9 @@ namespace Pathfinding.Systems
 
                 // Write our result
                 //Debug.Log($"Write path results from id {query.PathRequestId} length {query.PathLength}");
-                results.TryAdd(query.pathRequestId, new PathQueryResult
+                results.TryAdd(query.pathRequestId, new()
                 {
-                    //Status = *query.Status,
+                    status = query.status,
                     path = query.path,
                     pathLength = query.pathLength,
                 });
@@ -212,7 +212,7 @@ namespace Pathfinding.Systems
                 // Handle query start.
                 if (query.status == 0)
                 {
-                    query.status = navMeshQuery.BeginFindPath(query.from, query.to, query.areaMask);
+                    query.status = navMeshQuery.BeginFindPath(query.from, query.to);
                 }
 
                 // Handle query in progress.

@@ -21,7 +21,7 @@ namespace Pathfinding.Systems
         {
             var pathResults = SystemAPI.GetSingleton<PathResultsSingleton>();
 
-            state.Dependency = new ProcessPathResults()
+            state.Dependency = new Job()
             {
                 findPathReadHandle = SystemAPI.GetComponentTypeHandle<Pathfinder>(true),
                 pathBufferWriteHandle = SystemAPI.GetBufferTypeHandle<PathBuffer>(),
@@ -31,7 +31,7 @@ namespace Pathfinding.Systems
 
 
         [BurstCompile]
-        private unsafe struct ProcessPathResults : IJobChunk
+        private unsafe struct Job : IJobChunk
         {
             [ReadOnly] public ComponentTypeHandle<Pathfinder> findPathReadHandle;
 
@@ -53,7 +53,7 @@ namespace Pathfinding.Systems
                         continue;
 
                     var result = pathResults[findPath.pathId];
-                    findPath.pathStatus = PathStatus.Success;
+                    findPath.pathStatus = result.status;
 
                     //Debug.Log($"Found path result writing {result.PathLength}");
 

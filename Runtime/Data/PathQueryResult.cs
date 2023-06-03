@@ -7,6 +7,6 @@ namespace Pathfinding.Data
         public NavMeshLocation* path;
 
         public int pathLength;
-        //public PathStatus Status;
+        public PathQueryStatus status;
     }
 }
