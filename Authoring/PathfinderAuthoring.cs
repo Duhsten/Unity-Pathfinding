@@ -8,8 +8,11 @@ namespace Pathfinding.Authoring
 {
     public class PathfinderAuthoring : MonoBehaviour
     {
+        [Tooltip(
+            "Minimal distance for which paths are queried. If path will be below specified value - no query will happen.")]
         public float minDistance;
 
+        [Tooltip("Agent index which matches agent in navigation settings.")]
         public int agentId;
 
         public class PathfinderAuthoringBaker : Baker<PathfinderAuthoring>
