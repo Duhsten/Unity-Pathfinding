@@ -13,21 +13,21 @@ namespace Pathfinding.Systems
         {
             state.RequireForUpdate<PhysicsDebugDisplayData>();
         }
-
+        
         [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
             SystemAPI.GetSingleton<PhysicsDebugDisplayData>();
-
+        
             foreach (var path in SystemAPI.Query<DynamicBuffer<PathBuffer>>())
             {
                 if (path.IsEmpty)
                 {
                     continue;
                 }
-
+        
                 var pathArray = path.AsNativeArray().Reinterpret<float3>();
-
+        
                 for (var i = 0; i < pathArray.Length - 1; i++)
                 {
                     var pos = pathArray[i];

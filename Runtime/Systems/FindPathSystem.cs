@@ -6,6 +6,7 @@ using Unity.Burst.Intrinsics;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
+using UnityEngine;
 using UnityEngine.Experimental.AI;
 
 namespace Pathfinding.Systems
@@ -93,7 +94,7 @@ namespace Pathfinding.Systems
                         continue;
                     }
 
-                    //Debug.Log($"Firing off request with id {pathId} from {sourcePos} to {targetPos}");
+                    Debug.Log($"Firing off request with id {pathId} from {sourcePos} to {targetPos}");
                     findPath.pathId = pathId;
                     findPath.pathStatus = PathQueryStatus.InProgress;
                     // findPath.pathWalkerIndex = 0;
